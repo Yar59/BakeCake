@@ -168,7 +168,7 @@
 										</div>
 									{% endfor %}
 									<div class="modal-footer d-flex justify-content-between">
-										<span class="cake_blue d-flex">Статус: В доставке</span>
+										<span class="cake_blue d-flex">Статус: {{order.get_status_display}}</span>
 										<span class="cake_blue d-flex align-items-center">Время доставки: ?</span>
 									</div>
 								</div>

@@ -52,10 +52,23 @@ class User(AbstractBaseUser, PermissionsMixin):
 
 
 class Order(models.Model):
+    STATUSES = [
+        ('1', 'Ожидает оплаты'),
+        ('2', 'Принят к обработке'),
+        ('3', 'Готовится'),
+        ('4', 'Передан в доставку'),
+        ('5', 'Завершен'),
+    ]
     address = models.CharField('Адрес', max_length=150)
     date = models.DateField('Дата доставки')
     time = models.TimeField('Время доставки')
     delivcomments = models.TextField('Комментарий к доставке', blank=True)
+    status = models.CharField(
+        'Статус заказа',
+        max_length=20,
+        choices=STATUSES,
+        default='1',
+    )
     user = models.ForeignKey(
         User,
         on_delete=models.CASCADE,
